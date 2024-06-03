@@ -9,6 +9,21 @@ def multiplier(input)
             result += char.to_i * 3
         end
     end
-    puts result
+    return result
 end
-multiplier(test)
+
+def mod_of_ten(input)
+    remainder = 10 - (input % 10)
+    if remainder == 10
+        return 0
+    end
+    return remainder
+end
+
+def get_final_isbn_number(incomplete_isbn, remainder)
+    return "#{incomplete_isbn}#{remainder}"
+end
+
+sum = multiplier(test)
+remainder = mod_of_ten(sum)
+puts get_final_isbn_number(test, remainder)

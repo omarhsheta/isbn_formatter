@@ -1,5 +1,5 @@
-require './ISBN13.rb'
-require './Validator.rb'
+require './controllers/ISBN13.rb'
+require './controllers/Validator.rb'
 
 input = gets.chomp
 validate = Validator.new(input)

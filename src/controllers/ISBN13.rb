@@ -1,20 +1,21 @@
 
 class ISBN13
 
-    def initialize(isbn)
-        @incomplete_isbn = isbn
-    end
-
     def multiplier(input)
-        result = 0
-        input.each_char.with_index do |char, index|
-            if index % 2 == 0
-                result += char.to_i * 1
-            else
-                result += char.to_i * 3
+        if (input.length == 12)
+            result = 0
+            input.each_char.with_index do |char, index|
+                if index % 2 == 0
+                    result += char.to_i * 1
+                else
+                    result += char.to_i * 3
+                end
             end
+            return result
+        else
+            puts "ERROR: The string length should be exactly 12"
+            return -1
         end
-        return result
     end
     
     def mod_of_ten(input)
@@ -29,9 +30,9 @@ class ISBN13
         return "#{incomplete_isbn}#{remainder}"
     end
     
-    def retrieve_complete_isbn()
-        multiplied_sum = multiplier(@incomplete_isbn)
+    def retrieve_complete_isbn(incomplete_isbn)
+        multiplied_sum = multiplier(incomplete_isbn)
         remainder_diff = mod_of_ten(multiplied_sum)
-        return get_final_isbn_number(@incomplete_isbn, remainder_diff)
+        return get_final_isbn_number(incomplete_isbn, remainder_diff)
     end
 end

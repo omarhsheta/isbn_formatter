@@ -18,7 +18,7 @@ class ISBN13
         end
     end
     
-    def mod_of_ten(input)
+    def get_final_number(input)
         remainder = 10 - (input % 10)
         if remainder == 10
             return 0
@@ -26,13 +26,14 @@ class ISBN13
         return remainder
     end
     
-    def get_final_isbn_number(incomplete_isbn, remainder)
-        return "#{incomplete_isbn}#{remainder}"
-    end
-    
     def retrieve_complete_isbn(incomplete_isbn)
-        multiplied_sum = multiplier(incomplete_isbn)
-        remainder_diff = mod_of_ten(multiplied_sum)
-        return get_final_isbn_number(incomplete_isbn, remainder_diff)
+        if (incomplete_isbn.length == 12)
+            multiplied_sum = multiplier(incomplete_isbn)
+            remainder_diff = get_final_number(multiplied_sum)
+            return "#{incomplete_isbn}#{remainder_diff}"
+        else
+            puts "ERROR: The input must be 12 characters long."
+            return nil
+        end
     end
 end

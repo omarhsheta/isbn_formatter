@@ -20,7 +20,7 @@ class Validator
     end
 
     def is_good_input()
-        if verify_length() && is_numeric()
+        if is_numeric() && verify_length() 
             return true
         end
         puts "Please check your input. Must be 12 base-10 numbers.\n" + ('-' * 100)
